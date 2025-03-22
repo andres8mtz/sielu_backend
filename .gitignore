@@ -1,4 +1,4 @@
-node_modules
-.ds_store
+node_modules/
+.DS_Store
 .env
 sielu-server
