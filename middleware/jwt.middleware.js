@@ -23,7 +23,21 @@ function getTokenFromHeaders(req) {
   return null;
 }
 
+const isAdmin = (req, res, next) => {
+const token = req.headers.authorization.split(" ")[1];
+
+  const payload = jwt.verify(token, process.env.TOKEN_SECRET);
+
+  req.payload = payload;
+  if (req.payload.role === "admin") {
+    next();
+  } else {
+    res.status(403).json({ message: "You are not authorized to access this resource" });
+  }
+};
+
 // Export the middleware so that we can use it to create protected routes
 module.exports = {
   isAuthenticated,
+  isAdmin
 };
