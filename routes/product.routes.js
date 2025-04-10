@@ -4,7 +4,7 @@ const Product = require("../models/Product.model");
 const mongoose = require("mongoose");
 const { isAdmin } = require("../middleware/jwt.middleware");
 
-router.get("/products", (req, res, next) => {
+router.get('/products', (req, res, next) => {
     Product.find()
       .then((allProducts) => res.json(allProducts))
       .catch((err) => {
@@ -64,7 +64,7 @@ router.put("/products/:productId", isAdmin, (req, res, next) => {
   }
 );
 
-router.delete("/products/:productId", (req, res, next) => {
+router.delete("/products/:productId", isAdmin, (req, res, next) => {
     const { productId } = req.params;
 
     if (!mongoose.Types.ObjectId.isValid(productId)) {

@@ -17,12 +17,10 @@ const productSchema = new Schema(
     category: {
       type: String,
       enum: ['skincare', 'makeup', 'haircare', 'fragrance', 'bodycare', 'other'],
-      required: [true, 'Product Category is required.'],
     },
     SKU: {
       type: String,
-      required: [true, 'Product SKU is required.'],
-    },
+        },
     image: {
       type: [String],
       default: 'https://res.cloudinary.com/dxjse9tsv/image/upload/v1625073462/avatars/default-avatar.png',
